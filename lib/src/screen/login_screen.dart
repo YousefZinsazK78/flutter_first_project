@@ -17,6 +17,7 @@ class LoginScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              const Spacer(),
               Text(
                 'Login',
                 style: headlineTextStyle,
@@ -56,9 +57,26 @@ class LoginScreen extends StatelessWidget {
               const Spacer(),
               Align(
                 alignment: Alignment.bottomCenter,
-                child: Text(
-                  'Don\'t have an account? Sign up',
-                  style: bodyTextStyle,
+                child: InkWell(
+                  onTap: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('sign up'),
+                      ),
+                    );
+                  },
+                  child: RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: 'Sign up',
+                          style: bodyTextStyle.copyWith(color: primaryColor),
+                        ),
+                      ],
+                      text: 'Don\'t have and account? ',
+                      style: bodyTextStyle,
+                    ),
+                  ),
                 ),
               ),
             ],
